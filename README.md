@@ -244,15 +244,15 @@ The Normalization of model training on  is GN, the model training on GPU is used
 ## [Evaluation Performance](#contents)
 
 On the default
-| Parameters  | 8 GPUs                            |
-| ------------------- | --------------------------- |--------------------------- |
-| Model Version      | AdvancedEAST        |
+| Parameters  |  8 GPUs                            |
+| ------------------- | --------------------------- |
+| Model Version      | AAdvancedEAST        |
 | Resources        | Tesla V100S-PCIE 32G|
 | MindSpore Version   | 1.1                 |
 | Dataset | 1000 images |
-| batch_size          |8                        |
+| batch_size          |  8                        |
 | Outputs | precision, recall, F score |
-| performance | 92.53 55.49 66.01 |
+| performance |  92.53 55.49 66.01 |
 
 # [ModelZoo Homepage](#contents)
 
