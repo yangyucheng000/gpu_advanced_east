@@ -125,11 +125,7 @@ python preparedata.py
 Prepare the VGG16 pre-training model. Due to copyright restrictions, please go to https://github.com/machrisaa/tensorflow-vgg to download the VGG16 pre-training model and place it in the src folder.
 If you have the checkpoint of VGG16, you can load the parameters in this way, the training training time can be shorten obviously.
 
-- single 
 
-```bash
-python train.py  --device_target="" --is_distributed=0 --device_id=0  > output.train.log 2>&1 &
-```
 
 - single GPU
 
@@ -143,14 +139,6 @@ python train.py  --device_target="GPU" --is_distributed=0 --device_id=0  > outpu
 python train_single_size.py  --device_target="" --is_distributed=0 --device_id=2 --size=256  > output.train.log 2>&1 &
 ```
 
-- multi s
-
-```bash
-# running on distributed environment（8p）
-bash run_distribute_train.sh [DATSET_PATH] [RANK_TABLE_FILE]
-```
-
-The detailed training parameters are in /src/config.py。
 
 - multi GPUs
 
@@ -239,32 +227,32 @@ Inference result is saved in current path, you can find result in acc.log file.
 
 The performance listed below are acquired with the default configurations in /src/config.py.
 The Normalization of model training on  is GN, the model training on GPU is used BN.
-| Parameters           | single                             |  8 GPUs                            |
-| -------------------- | ------------------------------------- |---------------------------------------------- |
-| Model Version        | AdvancedEAST            | AdvancedEAST              |
-| Resources            |  910 | Tesla V100S-PCIE 32G|
-| MindSpore Version    | 1.1             |1.1                     |
-| Dataset              | MTWI-2018           |MTWI-2018                 |
-| Training Parameters  | epoch=6, batch_size=2, lr=1e-4  |epoch=6, batch_size=2, lr=1e-3  |
-| Optimizer            | AdamWeightDecay             |AdamWeightDecay             |
-| Loss Function        | QuadLoss |QuadLoss |
-| Outputs              |  matrix with size of 3x64x64,3x96x96,3x112x112  |matrix with size of 3x64x64,3x96x96,3x112x112       |
-| Loss                 | 0.1           |0.1           |
-| Total Time           | 28 mins, 60 mins, 90 mins | 4.9 mins, 10.3 mins, 14.5 mins
-| Checkpoints          | 173MB（.ckpt file）                |173MB（.ckpt file）                |
+| Parameters           |   8 GPUs                            |
+| -------------------- | ---------------------------------------------- |
+| Model Version        | AdvancedEAST              |
+| Resources            | Tesla V100S-PCIE 32G|
+| MindSpore Version    | 1.1                     |
+| Dataset              |MTWI-2018                 |
+| Training Parameters  | epoch=6, batch_size=2, lr=1e-3  |
+| Optimizer            | AdamWeightDecay             |
+| Loss Function        |QuadLoss |
+| Outputs              |matrix with size of 3x64x64,3x96x96,3x112x112       |
+| Loss                 |0.1           |
+| Total Time           | 4.9 mins, 10.3 mins, 14.5 mins
+| Checkpoints          | 173MB（.ckpt file）                |
 
 ## [Evaluation Performance](#contents)
 
 On the default
-| Parameters  | single           | 8 GPUs                            |
+| Parameters  | 8 GPUs                            |
 | ------------------- | --------------------------- |--------------------------- |
-| Model Version      | AdvancedEAST        |AdvancedEAST        |
-| Resources        |  910         |Tesla V100S-PCIE 32G|
-| MindSpore Version   | 1.1                 | 1.1                 |
-| Dataset | 1000 images |1000 images |
-| batch_size          |   8                        | 8                        |
-| Outputs | precision, recall, F score |precision, recall, F score |
-| performance | 94.35, 55.45, 66.31 | 92.53 55.49 66.01 |
+| Model Version      | AdvancedEAST        |
+| Resources        | Tesla V100S-PCIE 32G|
+| MindSpore Version   | 1.1                 |
+| Dataset | 1000 images |
+| batch_size          |8                        |
+| Outputs | precision, recall, F score |
+| performance | 92.53 55.49 66.01 |
 
 # [ModelZoo Homepage](#contents)
 
